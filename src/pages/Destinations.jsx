@@ -1,22 +1,23 @@
-// src/pages/Destinations.jsx
+// src/pages/Destinations.jsx - REPLACE ENTIRE FILE
 import React, { useState } from 'react';
 import { mockDestinations, destinationCities } from '../data/MockDestinations';
+import { useTripContext } from '../context/TripContext';
 import '../styles/Destinations.css';
 
 const Destinations = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCity, setSelectedCity] = useState('all');
   const [filteredDestinations, setFilteredDestinations] = useState(mockDestinations);
+  
+  const { addDestination, isInPlan } = useTripContext();
 
   const handleSearch = () => {
     let filtered = mockDestinations;
 
-    // Filter by city
     if (selectedCity !== 'all') {
       filtered = filtered.filter(dest => dest.city === selectedCity);
     }
 
-    // Filter by search query
     if (searchQuery) {
       filtered = filtered.filter(dest =>
         dest.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -52,9 +53,15 @@ const Destinations = () => {
     setFilteredDestinations(mockDestinations);
   };
 
+  const handleAddDestination = (destination) => {
+    const success = addDestination(destination);
+    if (success) {
+      console.log('Destination added successfully!');
+    }
+  };
+
   return (
     <div className="destinations-page">
-      {/* Search Section */}
       <div className="search-section">
         <h2>📍 Explore Popular European Destinations</h2>
         
@@ -77,7 +84,6 @@ const Destinations = () => {
           )}
         </div>
 
-        {/* City Filter Buttons */}
         <div className="city-filters">
           <button
             className={`city-btn ${selectedCity === 'all' ? 'active' : ''}`}
@@ -97,7 +103,6 @@ const Destinations = () => {
         </div>
       </div>
 
-      {/* Results Section */}
       <div className="destinations-results">
         <h3>
           {selectedCity === 'all' 
@@ -163,7 +168,13 @@ const Destinations = () => {
                         }
                       </span>
                     </div>
-                    <button className="add-btn">Add to Itinerary</button>
+                    <button 
+                      className={`add-btn ${isInPlan('destinations', destination.id) ? 'added' : ''}`}
+                      onClick={() => handleAddDestination(destination)}
+                      disabled={isInPlan('destinations', destination.id)}
+                    >
+                      {isInPlan('destinations', destination.id) ? '✓ Added' : 'Add to Itinerary'}
+                    </button>
                   </div>
 
                   <div className="destination-rating">

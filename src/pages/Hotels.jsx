@@ -1,11 +1,14 @@
-// src/pages/Hotels.jsx
+// src/pages/Hotels.jsx - REPLACE ENTIRE FILE
 import React, { useState } from 'react';
 import { mockHotels } from '../data/MockHotels';
+import { useTripContext } from '../context/TripContext';
 import '../styles/Hotels.css';
 
 const Hotels = () => {
   const [searchCity, setSearchCity] = useState('');
   const [filteredHotels, setFilteredHotels] = useState(mockHotels);
+  
+  const { addHotel, isInPlan } = useTripContext();
 
   const handleSearch = () => {
     if (searchCity === '') {
@@ -26,9 +29,15 @@ const Hotels = () => {
     setFilteredHotels(mockHotels);
   };
 
+  const handleAddHotel = (hotel) => {
+    const success = addHotel(hotel);
+    if (success) {
+      console.log('Hotel added successfully!');
+    }
+  };
+
   return (
     <div className="hotels-page">
-      {/* Search Section */}
       <div className="search-section">
         <h2>🏨 Find Your Perfect Stay in Europe</h2>
         <div className="search-form">
@@ -51,7 +60,6 @@ const Hotels = () => {
         </div>
       </div>
 
-      {/* Results Section */}
       <div className="hotels-results">
         <h3>Available Hotels ({filteredHotels.length})</h3>
         
@@ -89,7 +97,13 @@ const Hotels = () => {
                       <span className="price-label">Per Night</span>
                       <span className="price-amount">₹{hotel.price.toLocaleString()}</span>
                     </div>
-                    <button className="add-btn">Add to Plan</button>
+                    <button 
+                      className={`add-btn ${isInPlan('hotels', hotel.id) ? 'added' : ''}`}
+                      onClick={() => handleAddHotel(hotel)}
+                      disabled={isInPlan('hotels', hotel.id)}
+                    >
+                      {isInPlan('hotels', hotel.id) ? '✓ Added' : 'Add to Plan'}
+                    </button>
                   </div>
                   
                   <div className="hotel-reviews">

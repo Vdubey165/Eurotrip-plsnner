@@ -1,0 +1,53 @@
+/* src/styles/PageLayout.css */
+.page-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: 2rem;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 60px);
+}
+
+.sidebar-left,
+.sidebar-right {
+  height: fit-content;
+}
+
+.main-content {
+  min-width: 0; /* Prevents grid overflow */
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .page-layout {
+    grid-template-columns: 280px 1fr 280px;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .sidebar-left {
+    order: 2;
+  }
+
+  .main-content {
+    order: 1;
+  }
+
+  .sidebar-right {
+    order: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-layout {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+}

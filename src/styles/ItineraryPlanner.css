@@ -1,0 +1,190 @@
+/* src/styles/ItineraryPlanner.css */
+.itinerary-planner {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 1rem;
+}
+
+.itinerary-title {
+  margin: 0;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.itinerary-content {
+  padding: 1rem;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: #6b7280;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.itinerary-timeline {
+  position: relative;
+}
+
+.itinerary-day {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.itinerary-day:last-child {
+  margin-bottom: 0;
+}
+
+.itinerary-day::before {
+  content: '';
+  position: absolute;
+  left: 29px;
+  top: 40px;
+  bottom: -20px;
+  width: 2px;
+  background: #e0e0e0;
+}
+
+.itinerary-day:last-child::before {
+  display: none;
+}
+
+.day-marker {
+  flex-shrink: 0;
+  width: 60px;
+}
+
+.day-number {
+  display: inline-block;
+  background: #2c3e50;
+  color: white;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.day-content {
+  flex: 1;
+}
+
+.itinerary-item {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.2s;
+}
+
+.itinerary-item:hover {
+  border-color: #2c3e50;
+  background: white;
+}
+
+.item-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-details h4 {
+  margin: 0 0 0.4rem 0;
+  color: #1f2937;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.item-details p {
+  margin: 0 0 0.4rem 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.item-time {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.remove-btn-small {
+  width: 28px;
+  height: 28px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.remove-btn-small:hover {
+  background: #2c3e50;
+  color: white;
+  border-color: #2c3e50;
+}
+
+/* Different colors for item types */
+.flight-item {
+  border-left: 3px solid #2c3e50;
+}
+
+.hotel-item {
+  border-left: 3px solid #6b7280;
+}
+
+.destination-item {
+  border-left: 3px solid #1f2937;
+}
+
+/* Scrollbar Styling */
+.itinerary-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.itinerary-content::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.itinerary-content::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+.itinerary-content::-webkit-scrollbar-thumb:hover {
+  background: #2c3e50;
+}

@@ -1,12 +1,15 @@
-// src/pages/Flights.jsx
+// src/pages/Flights.jsx - REPLACE ENTIRE FILE
 import React, { useState } from 'react';
 import { mockFlights } from '../data/MockFlights';
-import '../styles/flights.css';
+import { useTripContext } from '../context/TripContext';
+import '../styles/Flights.css';
 
 const Flights = () => {
   const [searchFrom, setSearchFrom] = useState('');
   const [searchTo, setSearchTo] = useState('');
   const [filteredFlights, setFilteredFlights] = useState(mockFlights);
+  
+  const { addFlight, isInPlan } = useTripContext();
 
   const handleSearch = () => {
     const filtered = mockFlights.filter(flight => {
@@ -17,6 +20,14 @@ const Flights = () => {
       return matchFrom && matchTo;
     });
     setFilteredFlights(filtered);
+  };
+
+  const handleAddFlight = (flight) => {
+    const success = addFlight(flight);
+    if (success) {
+      // Optional: Show success message
+      console.log('Flight added successfully!');
+    }
   };
 
   return (
@@ -73,7 +84,13 @@ const Flights = () => {
 
               <div className="flight-footer">
                 <span className="date">📅 {flight.date}</span>
-                <button className="add-btn">Add to Plan</button>
+                <button 
+                  className={`add-btn ${isInPlan('flights', flight.id) ? 'added' : ''}`}
+                  onClick={() => handleAddFlight(flight)}
+                  disabled={isInPlan('flights', flight.id)}
+                >
+                  {isInPlan('flights', flight.id) ? '✓ Added' : 'Add to Plan'}
+                </button>
               </div>
             </div>
           ))}

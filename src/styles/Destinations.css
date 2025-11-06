@@ -1,4 +1,9 @@
 /* src/styles/Destinations.css */
+.flights-page,
+.hotels-page,
+.destinations-page {
+  padding: 0; /* Remove padding since PageLayout handles it */
+}
 
 .destinations-page {
   background: #f5f5f5;
@@ -375,4 +380,16 @@
   .add-btn {
     width: 100%;
   }
+}
+
+/* Add to end of Flights.css, Hotels.css, and Destinations.css */
+
+.add-btn.added {
+  background: #10b981;
+  cursor: not-allowed;
+}
+
+.add-btn.added:hover {
+  background: #10b981;
+  transform: none;
 }
