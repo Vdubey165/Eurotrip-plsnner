@@ -1,0 +1,87 @@
+// src/data/MockHotels.js
+export const mockHotels = [
+  {
+    id: 1,
+    name: "The Grand Paris Hotel",
+    location: "Champs-Élysées, Paris",
+    city: "Paris",
+    country: "France",
+    price: 12000,
+    pricePerNight: 12000,
+    rating: 4.8,
+    reviews: 328,
+    image: "/hotel-room-1.jpg",
+    amenities: ["Free WiFi", "Pool", "Restaurant", "Gym"],
+    description: "Luxury hotel in the heart of Paris with stunning views of the Eiffel Tower."
+  },
+  {
+    id: 2,
+    name: "Rome Boutique Suites",
+    location: "Trastevere, Rome",
+    city: "Rome",
+    country: "Italy",
+    price: 8500,
+    pricePerNight: 8500,
+    rating: 4.6,
+    reviews: 215,
+    image: "/hotel-room-2.jpg",
+    amenities: ["Free WiFi", "Breakfast", "Airport Shuttle"],
+    description: "Charming boutique hotel near the Colosseum with authentic Italian hospitality."
+  },
+  {
+    id: 3,
+    name: "London Thames View",
+    location: "Westminster, London",
+    city: "London",
+    country: "UK",
+    price: 15000,
+    pricePerNight: 15000,
+    rating: 4.9,
+    reviews: 442,
+    image: "/hotel-room-3.jpg",
+    amenities: ["Free WiFi", "Pool", "Spa", "Restaurant", "Bar"],
+    description: "5-star luxury hotel with panoramic views of the Thames and Big Ben."
+  },
+  {
+    id: 4,
+    name: "Berlin Modern Lofts",
+    location: "Mitte, Berlin",
+    city: "Berlin",
+    country: "Germany",
+    price: 7000,
+    pricePerNight: 7000,
+    rating: 4.5,
+    reviews: 189,
+    image: "/hotel-room-4.jpg",
+    amenities: ["Free WiFi", "Kitchen", "Workspace"],
+    description: "Contemporary lofts in central Berlin, perfect for business and leisure."
+  },
+  {
+    id: 5,
+    name: "Barcelona Beach Resort",
+    location: "Barceloneta, Barcelona",
+    city: "Barcelona",
+    country: "Spain",
+    price: 10500,
+    pricePerNight: 10500,
+    rating: 4.7,
+    reviews: 356,
+    image: "/hotel-room-5.jpg",
+    amenities: ["Free WiFi", "Beach Access", "Pool", "Restaurant"],
+    description: "Beachfront resort with Mediterranean views and world-class dining."
+  },
+  {
+    id: 6,
+    name: "Amsterdam Canal House",
+    location: "Jordaan, Amsterdam",
+    city: "Amsterdam",
+    country: "Netherlands",
+    price: 9500,
+    pricePerNight: 9500,
+    rating: 4.6,
+    reviews: 267,
+    image: "/hotel-room-6.jpg",
+    amenities: ["Free WiFi", "Bike Rental", "Breakfast"],
+    description: "Historic canal house hotel with Dutch charm and modern comforts."
+  }
+];
